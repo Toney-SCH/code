@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>验证码刷新</title>
+		<style type="text/css">
+			tr {line-height: 30px; height: 30px;}
+			input {height: 30px;}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>验证码：</td>
+				<td>
+					<input type="text" name="vcode" />
+					<img src="vcode.php" id="id_vcode" style="text-align: baseline;" onclick="changeVcode()"/>
+				</td>
+			</tr>
+		</table>
+		
+	<script type="text/javascript">
+		
+		function changeVcode() {
+			
+			// 向验证码 php 页面发出新的请求
+			var element = document.getElementById('id_vcode');
+			// 为什么需要的 vcode.php 后面传送参数 t 呢？
+			// 因为浏览器不会对同一个已经请求过的 URL 发起新的请求
+			var vcode_url = 'vcode.php?t=' + Math.random();
+			element.setAttribute('src', vcode_url);
+		}
+	
+	</script>
+	</body>
+</html>
